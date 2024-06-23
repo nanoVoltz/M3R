@@ -32,9 +32,10 @@ export const getTabs = (theme: Theme): M3Tabs => {
                         width: '24px',
                         height: '24px',
                     },
-
-                    borderBottom: '1px solid',
-                    borderColor: palette.surfaceVariant.main,
+                },
+                indicator: {
+                    height: "5px",
+                    borderRadius: "4px 4px 0px 0px",
                 },
             }
         },
