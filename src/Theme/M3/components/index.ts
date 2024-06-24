@@ -26,4 +26,6 @@ export * from "./TimePicker";
 export * from "./TextField";
 export * from "./Icon";
 export * from "./Table";
-
+export * from "./Chip";
+export * from "./Tabs";
+export * from "./Tab";

@@ -28,10 +28,10 @@ import {
   getIcon,
   getList,
   getTable,
+  getTabs,
+  getChip,
+  getTab,
 } from "../components";
-import { getTabs } from "../components/Tabs";
-import { getTab } from "../components/Tab";
-import { getChip } from "../components/Chip";
 
 type M3Components = { components: Theme["components"] };
 
