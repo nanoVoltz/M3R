@@ -37,6 +37,9 @@ export const getTabs = (theme: Theme): M3Tabs => {
                     height: "5px",
                     borderRadius: "4px 4px 0px 0px",
                 },
+                flexContainer: {
+                    gap: '16px',
+                },
             }
         },
     }

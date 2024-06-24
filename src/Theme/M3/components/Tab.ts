@@ -16,6 +16,9 @@ export const getTab = (theme: Theme): M3Tab => {
             styleOverrides: {
                 root: {
                     color: palette.onSurfaceVariant.main,
+                    padding: '12px 4px',
+                    minWidth: 'auto',
+                    maxWidth: 'auto',
                     '&:hover': {
                         color: palette.onSurface.main,
                         background: getStateLayerColor(StateLayer.Hover, theme.palette.surface.main, theme.palette.primary.main),
