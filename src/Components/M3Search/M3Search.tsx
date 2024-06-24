@@ -3,65 +3,70 @@ import { M3TextField } from "../M3TextField"
 import { getStateLayerColor, StateLayer } from "../.."
 import { alpha, styled, Box, InputBase } from "@mui/material"
 
-const Search = styled(Box)(({ theme }) => {
-  return ({
-    background: theme.palette.surfaceContainerHigh.main,
-    boxShadow: theme.shadows[3],
-    border: 0,
-    borderRadius: 999,
-    minHeight: '56px',
-    display: 'flex',
-    alignItems: 'center',
+interface SearchProps {
+  shadow?: boolean;
+}
 
-    '& .Mui-Search-leading': {
-      '& .MuiIconButton-root': {
-        color: theme.palette.onSurface.main,
-      },
-    },
+const Search = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'shadow',
+})<SearchProps>(({ theme, shadow }) => ({
+  background: theme.palette.surfaceContainerHigh.main,
+  boxShadow: shadow ? theme.shadows[3] : 'none',
+  border: 0,
+  borderRadius: 999,
+  minHeight: '56px',
+  display: 'flex',
+  alignItems: 'center',
 
-    '& .Mui-Search-trailing': {
-      '& .MuiIconButton-root': {
-        color: theme.palette.onSurfaceVariant.main,
-      },
-      '& .MuiAvatar-root': {
-        height: '45px',
-        width: '45px',
-        borderRadius: '99%',
-      }
-    },
-
-    '& .MuiInputBase-input': {
-      fontSize: theme.typography.bodyLarge.fontSize,
-      lineHeight: theme.typography.bodyLarge.lineHeight,
-      letterSpacing: theme.typography.bodyLarge.letterSpacing,
-      fontWeight: theme.typography.bodyLarge.fontWeight,
-      backgroundColor: theme.palette.surfaceContainerHigh.main,
+  '& .Mui-Search-leading': {
+    '& .MuiIconButton-root': {
       color: theme.palette.onSurface.main,
-      '&::placeholder': {
-        color: theme.palette.onSurfaceVariant.main,
-      },
     },
+  },
 
-    '&:hover': {
-      background: getStateLayerColor(StateLayer.Hover, theme.palette.surfaceContainerLow.main, theme.palette.primary.main),
-      '& .MuiInputBase-input': {
-        background: getStateLayerColor(StateLayer.Hover, theme.palette.surfaceContainerLow.main, theme.palette.primary.main),
-      }
+  '& .Mui-Search-trailing': {
+    '& .MuiIconButton-root': {
+      color: theme.palette.onSurfaceVariant.main,
     },
-
-    "& .Mui-focused": {
-      "& .MuiOutlinedInput-notchedOutline": {
-        borderColor: theme.palette.secondary.main
-      },
+    '& .MuiAvatar-root': {
+      height: '45px',
+      width: '45px',
+      borderRadius: '99%',
     }
-  })
-})
+  },
+
+  '& .MuiInputBase-input': {
+    fontSize: theme.typography.bodyLarge.fontSize,
+    lineHeight: theme.typography.bodyLarge.lineHeight,
+    letterSpacing: theme.typography.bodyLarge.letterSpacing,
+    fontWeight: theme.typography.bodyLarge.fontWeight,
+    backgroundColor: theme.palette.surfaceContainerHigh.main,
+    color: theme.palette.onSurface.main,
+    '&::placeholder': {
+      color: theme.palette.onSurfaceVariant.main,
+    },
+  },
+
+  '&:hover': {
+    background: getStateLayerColor(StateLayer.Hover, theme.palette.surfaceContainerLow.main, theme.palette.primary.main),
+    '& .MuiInputBase-input': {
+      background: getStateLayerColor(StateLayer.Hover, theme.palette.surfaceContainerLow.main, theme.palette.primary.main),
+    }
+  },
+
+  "& .Mui-focused": {
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.secondary.main
+    },
+  }
+}))
+
 const SearchLeading = ({ children }: { children: React.ReactNode }) => <Box className='Mui-Search-leading' sx={{ paddingX: '16px' }}>{children}</Box>
 const SearchTrailing = ({ children }: { children: React.ReactNode }) => <Box className='Mui-Search-trailing' sx={{ paddingX: '16px' }}>{children}</Box>
 
-export default function SearchField({ leading, placeholder, trailing }: { leading: React.ReactNode | undefined, trailing: React.ReactNode | undefined, placeholder: string | undefined }) {
+export default function SearchField({ leading, placeholder, trailing, shadow = false }: { leading: React.ReactNode | undefined, trailing: React.ReactNode | undefined, placeholder: string | undefined, shadow?: boolean }) {
   return (
-    <Search>
+    <Search shadow={shadow}>
       <SearchLeading>
         {leading}
       </SearchLeading>
