@@ -9,7 +9,7 @@ const Search = styled(Box)(({ theme }) => {
     boxShadow: theme.shadows[3],
     border: 0,
     borderRadius: 999,
-    height: '56px',
+    minHeight: '56px',
     display: 'flex',
     alignItems: 'center',
 
