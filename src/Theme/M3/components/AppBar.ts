@@ -25,7 +25,7 @@ export const getAppBar = (theme: Theme): M3AppBar => {
                     background: palette.surfaceContainer.main,
                     color: palette.onSurface.main,
                     '&.MuiPaper-root': {
-                        paddingInlineStart: '4px',
+                        paddingInlineStart: '16px',
                         paddingInlineEnd: '16px',
                         paddingTop: '12px',
                     },
