@@ -23,8 +23,12 @@ const M3Theme = ({ children, themeColor, enteredThemeMode }: M3Props) => {
   const { themeScheme, generateScheme } = useContext(ThemeSchemeContext);
   const { setThemeObj } = useContext(ThemeContext);
 
+  const savedColor = localStorage.getItem("savedColor");
+
   useEffect(() => {
-    generateScheme(themeColor || "#005fb0");
+    generateScheme(
+      savedColor ? savedColor : themeColor ? themeColor : undefined
+    );
     enteredThemeMode && setThemeMode(enteredThemeMode);
   }, []);
 

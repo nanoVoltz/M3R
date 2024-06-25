@@ -11,7 +11,6 @@ export * from "./M3/utils/generateTokens";
 export * from "./M3/utils/getMUIPalette";
 export * from "./M3/utils/getMUIComponents";
 export * from "./M3/utils/getStayeLayerColor";
-export * from "./M3/utils/generateRandomColor";
 export * from "./M3/utils/getTypography";
 
 export * from "./M3/components";
