@@ -8,8 +8,12 @@ import {
 } from "../..";
 
 export interface ThemeSchemeContextType {
-  generateScheme: (hexColor: string) => void;
+  generateScheme: (hexColor?: string) => void;
   themeScheme: ThemeScheme;
+  savedColor: {
+    get: string | null;
+    set: (newValue: string) => void;
+  };
 }
 
 export interface ThemeSchemeProviderProps {
@@ -19,6 +23,10 @@ export interface ThemeSchemeProviderProps {
 export const ThemeSchemeContext = createContext<ThemeSchemeContextType>({
   generateScheme: () => {},
   themeScheme: ThemeSchemeDefault,
+  savedColor: {
+    get: localStorage.getItem("savedColor"),
+    set: (newValue: string) => localStorage.setItem("savedColor", newValue),
+  },
 });
 
 const ThemeSchemeProvider: FC<ThemeSchemeProviderProps> = ({ children }) => {
@@ -37,12 +45,35 @@ const ThemeSchemeProvider: FC<ThemeSchemeProviderProps> = ({ children }) => {
     });
   }, [tonalPalette]);
 
-  const generateScheme = (hexColor: string) => {
-    generatePalette(hexColor);
+  const generateScheme = (hexColor?: string) => {
+    const DIGITS: string = "0123456789ABCDEF";
+
+    const randomColor = (): string => {
+      let result = "#";
+      for (let i = 0; i < 6; ++i) {
+        const index = Math.floor(16 * Math.random());
+        result += DIGITS[index];
+      }
+      localStorage.setItem("savedColor", result);
+
+      return result;
+    };
+
+    generatePalette(hexColor ? hexColor : randomColor());
+  };
+
+  const savedColor = {
+    get: localStorage.getItem("savedColor"),
+    set: (newValue: string) => {
+      generateScheme(newValue);
+      localStorage.setItem("savedColor", newValue);
+    },
   };
 
   return (
-    <ThemeSchemeContext.Provider value={{ generateScheme, themeScheme }}>
+    <ThemeSchemeContext.Provider
+      value={{ generateScheme, themeScheme, savedColor }}
+    >
       {children}
     </ThemeSchemeContext.Provider>
   );
