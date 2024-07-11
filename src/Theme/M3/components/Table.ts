@@ -16,6 +16,12 @@ interface M3Table {
   MuiTableRow: {
     styleOverrides?: ComponentsOverrides<Theme>["MuiTableRow"];
   };
+  MUIDataTableHeadCell: {
+    styleOverrides?: ComponentsOverrides<Theme>["MUIDataTableHeadCell"];
+  };
+  MUIDataTableSelectCell: {
+    styleOverrides?: ComponentsOverrides<Theme>["MUIDataTableSelectCell"];
+  };
 }
 
 export const getTable = (theme: Theme): M3Table => {
@@ -43,7 +49,7 @@ export const getTable = (theme: Theme): M3Table => {
           border: "none",
           borderBottomColor: palette.divider,
           backgroundColor: palette.surfaceContainerLow.main,
-          padding: "12px",
+          padding: "6px 12px",
           ...typography.titleSmall,
           fontWeight: "bold",
         },
@@ -58,6 +64,20 @@ export const getTable = (theme: Theme): M3Table => {
           ":hover": {
             backgroundColor: palette.surfaceContainerLow.main,
           },
+        },
+      },
+    },
+    MUIDataTableSelectCell: {
+      styleOverrides: {
+        headerCell: {
+          backgroundColor: palette.surfaceContainerLow.main,
+        },
+      },
+    },
+    MUIDataTableHeadCell: {
+      styleOverrides: {
+        fixedHeader: {
+          backgroundColor: palette.surfaceContainerLow.main,
         },
       },
     },
