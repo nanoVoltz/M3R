@@ -6,8 +6,16 @@ interface M3TabModifiedProps { }
 export type M3TabProps = M3TabModifiedProps & TabProps;
 
 const M3Tab = (props: M3TabProps) => {
-  const { children } = props;
-  return <Tab {...props}>{children}</Tab>;
+  const { children, onClick, ...rest } = props;
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.currentTarget.blur();
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  return <Tab {...rest} onClick={handleClick}>{children}</Tab>;
 };
 
 export default M3Tab;
