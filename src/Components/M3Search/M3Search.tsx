@@ -1,44 +1,34 @@
 import React from "react";
-import { M3TextField } from "../M3TextField";
 import { getStateLayerColor, StateLayer } from "../..";
-import { alpha, styled, Box, InputBase, InputBaseProps } from "@mui/material";
-
-interface SearchProps {
-  shadow?: boolean;
-}
+import { styled, Box, InputBase, InputBaseProps } from "@mui/material";
 
 // Define additional props and modified props for M3InputBase
-interface M3InputBaseModifiedProps {}
+interface M3InputBaseModifiedProps {
+  shadow?: boolean;
+  leading?: React.ReactNode | undefined;
+  trailing?: React.ReactNode | undefined;
+  placeholder?: string | undefined;
+}
 
 // Merge the new props with InputBaseProps
 export type M3InputBaseProps = M3InputBaseModifiedProps & InputBaseProps;
 
 const Search = styled(Box, {
   shouldForwardProp: (prop) => prop !== "shadow",
-})<SearchProps>(({ theme, shadow }) => ({
+})<InputBaseProps & { shadow?: boolean }>(({ theme, shadow }) => ({
   background: theme.palette.surfaceContainerHigh.main,
   boxShadow: shadow ? theme.shadows[3] : "none",
   border: 0,
   borderRadius: 999,
-  minHeight: "56px",
   display: "flex",
   alignItems: "center",
+  gap: "12px",
+  padding: "12px 20px",
 
-  "& .Mui-Search-leading": {
-    "& .MuiIconButton-root": {
-      color: theme.palette.onSurface.main,
-    },
-  },
-
-  "& .Mui-Search-trailing": {
-    "& .MuiIconButton-root": {
-      color: theme.palette.onSurfaceVariant.main,
-    },
-    "& .MuiAvatar-root": {
-      height: "45px",
-      width: "45px",
-      borderRadius: "99%",
-    },
+  "& .Mui-Search-leading , & .Mui-Search-trailing": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   "& .MuiInputBase-input": {
@@ -76,37 +66,18 @@ const Search = styled(Box, {
 }));
 
 const SearchLeading = ({ children }: { children: React.ReactNode }) => (
-  <Box className="Mui-Search-leading" sx={{ paddingX: "16px" }}>
-    {children}
-  </Box>
+  <Box className="Mui-Search-leading">{children}</Box>
 );
 const SearchTrailing = ({ children }: { children: React.ReactNode }) => (
-  <Box className="Mui-Search-trailing" sx={{ paddingX: "16px" }}>
-    {children}
-  </Box>
+  <Box className="Mui-Search-trailing">{children}</Box>
 );
 
-export default function SearchField({
-  leading,
-  placeholder,
-  trailing,
-  shadow = false,
-  inputBaseProps,
-}: {
-  leading: React.ReactNode | undefined;
-  trailing: React.ReactNode | undefined;
-  placeholder: string | undefined;
-  shadow?: boolean;
-  inputBaseProps?: M3InputBaseProps;
-}) {
+export default function SearchField(props: M3InputBaseProps) {
+  const { shadow, leading, trailing, placeholder } = props;
   return (
     <Search shadow={shadow}>
-      <SearchLeading>{leading}</SearchLeading>
-      <InputBase
-        {...inputBaseProps}
-        placeholder={placeholder}
-        sx={{ width: "100%" }}
-      />
+      {leading && <SearchLeading>{leading}</SearchLeading>}
+      <InputBase {...props} placeholder={placeholder} sx={{ width: "100%" }} />
       {trailing && <SearchTrailing>{trailing}</SearchTrailing>}
     </Search>
   );
