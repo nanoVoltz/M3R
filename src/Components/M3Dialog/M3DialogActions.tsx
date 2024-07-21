@@ -6,7 +6,7 @@ interface M3DialogActionModifiedProps {
   disableSpacing: boolean;
 }
 
-// Merge the new/ props with CardProps
+// Merge the new props with CardProps
 export type M3DialogActionProps = M3DialogActionModifiedProps &
   DialogActionsProps;
 
