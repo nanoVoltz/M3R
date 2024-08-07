@@ -56,7 +56,7 @@ const SelectList = styled("ul")<{
 const SelectListItem = styled("li")<{
   selected?: boolean;
   theme?: Theme;
-}>(({ selected , theme }) => ({
+}>(({ selected, theme }) => ({
   padding: "15px 50px",
   cursor: "pointer",
   backgroundColor: selected ? theme.palette.surfaceVariant.main : "transparent",
@@ -183,7 +183,9 @@ function CustomCalendarHeader(props: PickersCalendarHeaderProps<dayjs.Dayjs>) {
           onClick={toggleYearList}
           style={{ cursor: "pointer" }}
         >
-          <M3Typography variant="bodySmall">{currentMonth.format("YYYY")}</M3Typography>
+          <M3Typography variant="bodySmall">
+            {currentMonth.format("YYYY")}
+          </M3Typography>
           {showYearList ? <ArrowDropUp /> : <ArrowDropDown />}
         </Stack>
         <IconButton onClick={selectNextYear} title="Next year">
@@ -233,21 +235,19 @@ const CustomActionBar = ({
   onCancel: () => void;
 }) => (
   <Box display="flex" justifyContent="flex-end">
-    <M3Button onClick={onCancel}  variant='text'>
+    <M3Button onClick={onCancel} variant="text">
       Cancel
     </M3Button>
-    <M3Button onClick={onAccept} variant='text'>
+    <M3Button onClick={onAccept} variant="text">
       OK
     </M3Button>
   </Box>
 );
 
-const M3DatePicker = (
-  props: DatePickerProps<dayjs.Dayjs, boolean>
-) => {
-
+const M3DatePicker = (props: DatePickerProps<dayjs.Dayjs, boolean>) => {
   return (
     <DatePicker
+      format="DD/MM/YYYY"
       {...props}
       showDaysOutsideCurrentMonth={true}
       fixedWeekNumber={6}
