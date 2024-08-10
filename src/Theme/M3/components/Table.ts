@@ -105,6 +105,9 @@ export const getTable = (theme: Theme): M3Table => {
           overflow: "hidden",
           boxShadow: "none !important",
         },
+        liveAnnounce: {
+          display: "none",
+        },
       },
     },
     MUIDataTableToolbar: {
