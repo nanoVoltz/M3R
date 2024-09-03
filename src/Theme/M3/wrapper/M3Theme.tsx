@@ -21,7 +21,7 @@ interface M3Props {
 const M3Theme = ({ children, themeColor, enteredThemeMode }: M3Props) => {
   const { themeMode, setThemeMode } = useContext(ThemeModeContext);
   const { themeScheme, generateScheme } = useContext(ThemeSchemeContext);
-  const { setThemeObj } = useContext(ThemeContext);
+  const { setThemeObj, setPalette } = useContext(ThemeContext);
 
   const savedColor = localStorage.getItem("savedColor");
 
@@ -42,6 +42,10 @@ const M3Theme = ({ children, themeColor, enteredThemeMode }: M3Props) => {
 
     return theme;
   }, [themeMode, themeScheme]);
+
+  useEffect(() => {
+    setPalette(m3Theme.palette);
+  }, [m3Theme, setPalette]);
 
   useEffect(() => {
     setThemeObj(m3Theme);
