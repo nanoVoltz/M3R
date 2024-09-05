@@ -1,6 +1,10 @@
-export {default as M3Dialog} from './M3Dialog'
-export * from './M3Dialog'
-export {default as M3DialogActions} from './M3DialogActions'
-export {default as M3DialogContent} from './M3DialogContent'
-export {default as M3DialogContentText} from './M3DialogContentText'
-export {default as M3DialogTitle} from './M3DialogTitle'
+export { default as M3Dialog } from "./M3Dialog";
+export { default as M3DialogActions } from "./M3DialogActions";
+export { default as M3DialogContent } from "./M3DialogContent";
+export { default as M3DialogContentText } from "./M3DialogContentText";
+export { default as M3DialogTitle } from "./M3DialogTitle";
+export * from "./M3Dialog";
+export * from "./M3DialogActions";
+export * from "./M3DialogContent";
+export * from "./M3DialogContentText";
+export * from "./M3DialogTitle";

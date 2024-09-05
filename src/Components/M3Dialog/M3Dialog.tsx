@@ -1,60 +1,15 @@
 import { Dialog, DialogProps } from "@mui/material";
-import React, { MouseEventHandler, useState, useEffect } from "react";
+import React from "react";
 
-export interface M3DialogProps extends DialogProps{
-  children?: React.ReactNode;
-  open: boolean;
-  disableEscapeKeyDown?: boolean;
-  fullScreen?: boolean;
-  fullWidth?: boolean;
-  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false | undefined;
-  TransitionComponent: React.ComponentType<any>;
-  onClick?: MouseEventHandler<HTMLDivElement>;
-  onClose?: () => void;
-  scroll?: 'body' | 'paper';
-  sx?: object;
-}
+// Define additional props and modified props for M3Card
+interface M3DialogModifiedProps {}
 
-const M3Dialog = ({
-  children,
-  disableEscapeKeyDown,
-  fullScreen,
-  fullWidth,
-  maxWidth,
-  onClose = () => {},
-  scroll,
-  open,
-  sx,
-  onClick,
-  TransitionComponent
-}: M3DialogProps) => {
-  const [dialogOpen, setDialogOpen] = useState(open);
+// Merge the new props with CardProps
+export type M3DialogProps = M3DialogModifiedProps & DialogProps;
 
-  useEffect(() => {
-    setDialogOpen(open);
-  }, [open]);
-
-  const handleClose = () => {
-    setDialogOpen(false);
-    onClose();
-  }
-  
-  return (
-    <Dialog
-      disableEscapeKeyDown={disableEscapeKeyDown}
-      fullScreen={fullScreen}
-      open={dialogOpen}
-      scroll={scroll}
-      sx={sx}
-      fullWidth={fullWidth}
-      maxWidth={maxWidth}
-      TransitionComponent={TransitionComponent}
-      onClose={handleClose}
-      onClick={onClick}
-    >
-      {children}
-    </Dialog>
-  );
+const M3Dialog = (props: M3DialogProps) => {
+  const { children } = props;
+  return <Dialog {...props}>{children}</Dialog>;
 };
 
 export default M3Dialog;
