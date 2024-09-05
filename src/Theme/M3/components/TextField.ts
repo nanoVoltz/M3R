@@ -4,7 +4,6 @@ import {
   ComponentsOverrides,
   ComponentsVariants,
   alpha,
-  colors,
 } from "@mui/material";
 import { StateLayer, getStateLayerColor } from "../..";
 
@@ -29,16 +28,14 @@ export const getTextField = (theme: Theme): M3Button => {
       styleOverrides: {
         root: {
           textTransform: "none",
-          // border: `1px solid ${palette.outlineVariant.main}`,
-          borderTopRightRadius: "4px",
-          borderTopLeftRadius: "4px",
+          transition: ".5s",
         },
       },
       variants: [
         {
           props: { variant: "filled" },
           style: {
-            height: '56px',
+            height: "56px",
             boxShadow: theme.shadows[0],
             caret: palette.primary.main,
             color: palette.onSurface.main,
@@ -47,6 +44,8 @@ export const getTextField = (theme: Theme): M3Button => {
             lineHeight: theme.typography.bodyLarge.lineHeight,
             letterSpacing: theme.typography.bodyLarge.letterSpacing,
             fontWeight: theme.typography.bodyLarge.fontWeight,
+            borderTopRightRadius: "4px",
+            borderTopLeftRadius: "4px",
 
             label: {
               color: palette.onSurfaceVariant.main,
@@ -57,9 +56,9 @@ export const getTextField = (theme: Theme): M3Button => {
                 fontSize: theme.typography.bodySmall.fontSize,
                 lineHeight: theme.typography.bodySmall.lineHeight,
               },
-              '&.Mui-disabled': {
-                background: 'transparent',
-              }
+              "&.Mui-disabled": {
+                background: "transparent",
+              },
             },
 
             "& .MuiFormHelperText-root": {
@@ -67,15 +66,15 @@ export const getTextField = (theme: Theme): M3Button => {
               lineHeight: theme.typography.bodySmall.lineHeight,
               letterSpacing: theme.typography.bodySmall.letterSpacing,
               fontWeight: theme.typography.bodySmall.fontWeight,
-              '&.Mui-disabled': {
-                background: 'transparent',
-              }
+              "&.Mui-disabled": {
+                background: "transparent",
+              },
             },
 
             "& .MuiSvgIcon": {
               color: palette.onSurfaceVariant.main,
-              width: '24px',
-              height: '24px',
+              width: "24px",
+              height: "24px",
             },
 
             "& .Mui-disabled": {
@@ -85,18 +84,22 @@ export const getTextField = (theme: Theme): M3Button => {
 
             "&:hover": {
               color: palette.onSurface.main,
-              background: getStateLayerColor(StateLayer.Hover, palette.surface.main, palette.onSurface.main),
+              background: getStateLayerColor(
+                StateLayer.Hover,
+                palette.surfaceContainerHighest.main,
+                palette.onSurface.main
+              ),
               label: {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
                   color: palette.error.main,
-                }
+                },
               },
               "& .MuiSvgIcon": {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
                   color: palette.error.main,
-                }
+                },
               },
               "& .MuiFormHelperText-root": {
                 color: palette.onSurfaceVariant.main,
@@ -108,7 +111,7 @@ export const getTextField = (theme: Theme): M3Button => {
 
             "&:focus": {
               label: {
-                color: palette.primary.main
+                color: palette.primary.main,
               },
               "& .MuiSvgIcon": {
                 color: palette.onSurfaceVariant.main,
@@ -130,37 +133,38 @@ export const getTextField = (theme: Theme): M3Button => {
               },
               borderColor: palette.error.main,
             },
-
           },
         },
 
         {
           props: { variant: "outlined" },
           style: {
-            height: '56px',
+            height: "56px",
             caret: palette.primary.main,
             color: palette.onSurface.main,
             fontSize: theme.typography.bodyLarge.fontSize,
             lineHeight: theme.typography.bodyLarge.lineHeight,
             letterSpacing: theme.typography.bodyLarge.letterSpacing,
             fontWeight: theme.typography.bodyLarge.fontWeight,
-            borderColor: palette.outline.main,
-
+            borderRadius: "4px",
+            fieldset: {
+              borderColor: palette.outline.main,
+            },
             label: {
               color: palette.onSurfaceVariant.main,
               fontSize: theme.typography.bodyLarge.fontSize,
               lineHeight: theme.typography.bodyLarge.lineHeight,
               fontWeight: theme.typography.bodyLarge.fontWeight,
               "&[data-shrink='true']": {
-                fontSize: theme.typography.bodySmall.fontSize,
-                lineHeight: theme.typography.bodySmall.lineHeight,
+                fontSize: theme.typography.bodyMedium.fontSize,
+                lineHeight: theme.typography.bodyMedium.lineHeight,
               },
             },
 
             "& .MuiSvgIcon": {
               color: palette.onSurfaceVariant.main,
-              width: '24px',
-              height: '24px',
+              width: "24px",
+              height: "24px",
             },
 
             "& .MuiFormHelperText-root": {
@@ -185,25 +189,25 @@ export const getTextField = (theme: Theme): M3Button => {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
                   color: palette.error.main,
-                }
+                },
               },
               "& .MuiSvgIcon": {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
                   color: palette.error.main,
-                }
+                },
               },
               "& .MuiFormHelperText-root": {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
                   color: palette.error.main,
-                }
+                },
               },
             },
 
             "&:focus": {
               label: {
-                color: palette.primary.main
+                color: palette.primary.main,
               },
               "& .MuiSvgIcon": {
                 color: palette.onSurfaceVariant.main,
@@ -211,7 +215,7 @@ export const getTextField = (theme: Theme): M3Button => {
               "& .MuiFormHelperText-root": {
                 color: palette.onSurfaceVariant.main,
               },
-              outlineColor: palette.primary.main
+              outlineColor: palette.primary.main,
             },
 
             "& .Mui-error": {
@@ -223,9 +227,8 @@ export const getTextField = (theme: Theme): M3Button => {
               },
               "& .MuiFormHelperText-root": {
                 color: palette.error.main,
-
               },
-              borderColor: palette.error.main,
+              outlineColor: palette.error.main,
             },
           },
         },
