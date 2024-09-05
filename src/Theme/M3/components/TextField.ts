@@ -147,9 +147,7 @@ export const getTextField = (theme: Theme): M3Button => {
             letterSpacing: theme.typography.bodyLarge.letterSpacing,
             fontWeight: theme.typography.bodyLarge.fontWeight,
             borderRadius: "4px",
-            fieldset: {
-              borderColor: palette.outline.main,
-            },
+
             label: {
               color: palette.onSurfaceVariant.main,
               fontSize: theme.typography.bodyLarge.fontSize,
@@ -159,6 +157,19 @@ export const getTextField = (theme: Theme): M3Button => {
                 fontSize: theme.typography.bodyMedium.fontSize,
                 lineHeight: theme.typography.bodyMedium.lineHeight,
               },
+            },
+
+            // .MuiOutlinedInput-root fieldset
+
+            "& .MuiOutlinedInput-root fieldset": {
+              borderColor: palette.outline.main,
+            },
+            "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+              borderColor: palette.primary.main,
+            },
+
+            fieldset: {
+              borderColor: palette.outline.main,
             },
 
             "& .MuiSvgIcon": {
@@ -185,6 +196,14 @@ export const getTextField = (theme: Theme): M3Button => {
             "&:hover": {
               color: palette.onSurface.main,
               outlineColor: palette.onSurface.main,
+
+              "& .MuiOutlinedInput-root fieldset": {
+                borderColor: palette.onSurface.main,
+              },
+              "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+                borderColor: palette.primary.main,
+              },
+
               label: {
                 color: palette.onSurfaceVariant.main,
                 "&.Mui-error": {
@@ -209,6 +228,11 @@ export const getTextField = (theme: Theme): M3Button => {
               label: {
                 color: palette.primary.main,
               },
+
+              "& .MuiOutlinedInput-root fieldset": {
+                borderColor: palette.primary.main,
+              },
+
               "& .MuiSvgIcon": {
                 color: palette.onSurfaceVariant.main,
               },
