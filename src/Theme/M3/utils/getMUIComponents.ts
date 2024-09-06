@@ -31,6 +31,7 @@ import {
   getTabs,
   getChip,
   getTab,
+  getIconButton,
 } from "../components";
 
 type M3Components = { components: Theme["components"] };
@@ -70,6 +71,7 @@ export const getMUIComponents = (theme: Theme) => {
       ...getTabs(theme),
       ...getTab(theme),
       ...getChip(theme),
+      ...getIconButton(theme),
     },
   } as M3Components;
 };

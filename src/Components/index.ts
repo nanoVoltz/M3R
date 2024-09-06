@@ -38,3 +38,4 @@ export * from "./M3Table";
 export * from "./M3Tabs";
 export * from "./M3Tab";
 export * from "./M3Chip";
+export * from "./M3IconButton";
