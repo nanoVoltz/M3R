@@ -39,3 +39,4 @@ export * from "./M3Tabs";
 export * from "./M3Tab";
 export * from "./M3Chip";
 export * from "./M3IconButton";
+export * from "./M3Radio";

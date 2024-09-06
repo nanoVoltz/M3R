@@ -30,3 +30,4 @@ export * from "./Chip";
 export * from "./Tabs";
 export * from "./Tab";
 export * from "./IconButton";
+export * from "./Radio";
