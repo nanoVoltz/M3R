@@ -46,7 +46,9 @@ export const getTextField = (theme: Theme): M3Button => {
             fontWeight: theme.typography.bodyLarge.fontWeight,
             borderTopRightRadius: "4px",
             borderTopLeftRadius: "4px",
-
+            "& .MuiInputBase-root::before": {
+              borderBottomColor: theme.palette.outline.main,
+            },
             label: {
               color: palette.onSurfaceVariant.main,
               fontSize: theme.typography.bodyLarge.fontSize,
