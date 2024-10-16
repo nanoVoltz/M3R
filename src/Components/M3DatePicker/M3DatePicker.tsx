@@ -50,7 +50,6 @@ const SelectList = styled("ul")<{
   padding: 0,
   height: "fit-content",
   backgroundColor: theme.palette.surfaceContainerHigh.main,
-  border: "1px solid #ccc",
 }));
 
 const SelectListItem = styled("li")<{
