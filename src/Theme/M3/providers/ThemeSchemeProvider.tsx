@@ -1,16 +1,11 @@
 import React, { createContext, FC, useLayoutEffect, useState } from "react";
 
-import {
-  generateDesignTokens,
-  ThemeScheme,
-  ThemeSchemeDefault,
-  useTonalPalette,
-} from "../..";
+import { generateDesignTokens, ThemeScheme, ThemeSchemeDefault, useTonalPalette } from "../..";
 
 export interface ThemeSchemeContextType {
   generateScheme: (hexColor?: string) => void;
   themeScheme: ThemeScheme;
-  savedColor: {
+  storedColor: {
     get: string | null;
     set: (newValue: string) => void;
   };
@@ -23,16 +18,15 @@ export interface ThemeSchemeProviderProps {
 export const ThemeSchemeContext = createContext<ThemeSchemeContextType>({
   generateScheme: () => {},
   themeScheme: ThemeSchemeDefault,
-  savedColor: {
-    get: localStorage.getItem("savedColor"),
-    set: (newValue: string) => localStorage.setItem("savedColor", newValue),
+  storedColor: {
+    get: localStorage.getItem("storedColor"),
+    set: (newValue: string) => localStorage.setItem("storedColor", newValue),
   },
 });
 
 const ThemeSchemeProvider: FC<ThemeSchemeProviderProps> = ({ children }) => {
   const [tonalPalette, generatePalette] = useTonalPalette();
-  const [themeScheme, setThemeScheme] =
-    useState<ThemeScheme>(ThemeSchemeDefault);
+  const [themeScheme, setThemeScheme] = useState<ThemeScheme>(ThemeSchemeDefault);
 
   useLayoutEffect(() => {
     const lightTokens = generateDesignTokens("light", tonalPalette);
@@ -54,7 +48,7 @@ const ThemeSchemeProvider: FC<ThemeSchemeProviderProps> = ({ children }) => {
         const index = Math.floor(16 * Math.random());
         result += DIGITS[index];
       }
-      localStorage.setItem("savedColor", result);
+      localStorage.setItem("storedColor", result);
 
       return result;
     };
@@ -62,18 +56,16 @@ const ThemeSchemeProvider: FC<ThemeSchemeProviderProps> = ({ children }) => {
     generatePalette(hexColor ? hexColor : randomColor());
   };
 
-  const savedColor = {
-    get: localStorage.getItem("savedColor"),
+  const storedColor = {
+    get: localStorage.getItem("storedColor"),
     set: (newValue: string) => {
       generateScheme(newValue);
-      localStorage.setItem("savedColor", newValue);
+      localStorage.setItem("storedColor", newValue);
     },
   };
 
   return (
-    <ThemeSchemeContext.Provider
-      value={{ generateScheme, themeScheme, savedColor }}
-    >
+    <ThemeSchemeContext.Provider value={{ generateScheme, themeScheme, storedColor }}>
       {children}
     </ThemeSchemeContext.Provider>
   );
