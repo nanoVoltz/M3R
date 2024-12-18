@@ -22,6 +22,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.13",
@@ -35,6 +36,8 @@
     "react-dom": "^18.3.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "stylis": "^4.3.4",
+    "stylis-plugin-rtl": "^2.1.1",
     "tslib": "^2.6.2"
   },
   "peerDependencies": {

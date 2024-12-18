@@ -24,7 +24,6 @@ const M3Theme = ({ children, themeColor, enteredThemeMode }: M3Props) => {
   const { setThemeObj, setPalette } = useContext(ThemeContext);
 
   const storedColor = localStorage.getItem("storedColor");
-
   useEffect(() => {
     generateScheme(
       storedColor ? storedColor : themeColor ? themeColor : undefined
