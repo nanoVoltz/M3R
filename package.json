@@ -45,5 +45,11 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "overrides": {
+    "mui-datatables": {
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
+    }
+  }
 }
